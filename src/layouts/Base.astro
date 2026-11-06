@@ -1,5 +1,5 @@
 ---
-import '../styles/tokens.css';
+import '../styles/global.css';
 import mision from '../data/mision.json';
 const { titulo, descripcion, url } = mision.sitio;
 const og = new URL('/og-logo.png', url).href;
@@ -22,12 +22,14 @@ const og = new URL('/og-logo.png', url).href;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@800;900&display=swap" rel="stylesheet" />
+    <script is:inline>document.documentElement.classList.add('js');</script>
   </head>
   <body>
+    <a class="skip" href="#contenido">Saltar al contenido</a>
+    <canvas id="estrellas" aria-hidden="true"></canvas>
     <slot />
+    <script>
+      import '../scripts/ui.js';
+    </script>
   </body>
 </html>
-<style is:global>
-  html { background: var(--negro-espacial); color: var(--blanco); }
-  body { margin: 0; font-family: var(--font-mono); }
-</style>

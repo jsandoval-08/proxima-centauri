@@ -1,0 +1,63 @@
+---
+import mision from '../data/mision.json';
+import { fechaLarga, rango } from '../lib/calculos.js';
+
+const { lanzamiento, prediccion, cohete, sitio } = mision;
+const hecho = lanzamiento.estado === 'completado';
+const fecha = fechaLarga(lanzamiento.fecha);
+
+const tele = [
+  { n: 'Apogeo previsto', v: prediccion.apogeo.central, d: 0, u: 'm', r: `Rango ${rango(prediccion.apogeo, 0)} m` },
+  { n: 'Tiempo al apogeo', v: prediccion.tiempo_apogeo.central, d: 2, u: 's', r: `Rango ${rango(prediccion.tiempo_apogeo, 1)} s` },
+  { n: 'Eyección', v: prediccion.tiempo_eyeccion.central, d: 1, u: 's', r: 'Retardo del motor' },
+  { n: 'Masa al despegue', v: cohete.masa_despegue_g, d: 0, u: 'g', r: `Ø ${cohete.diametro_mm} mm · ${cohete.largo_cm} cm` },
+];
+---
+<section class="hero" id="inicio" aria-labelledby="titulo-hero">
+  <svg class="hero__orbita" viewBox="0 0 600 600" aria-hidden="true">
+    <circle cx="300" cy="300" r="296" stroke-dasharray="2 9" />
+    <circle cx="300" cy="300" r="210" />
+    <circle cx="300" cy="300" r="120" stroke-dasharray="2 9" />
+  </svg>
+
+  <div class="contenedor hero__grid" id="contenido" tabindex="-1">
+    <div>
+      <p class="etiqueta">// Misión · Rocket Tec Sinaloa 2026</p>
+      <h1 class="titulo" id="titulo-hero">PRÓXIMA <span class="c">CENTAURI</span></h1>
+      <p class="hero__ev">Rocket Tec Sinaloa 2026</p>
+      <p class="hero__ms">{sitio.mision}</p>
+      <p class={`estado ${hecho ? 'estado--ok' : ''}`}>
+        <i aria-hidden="true"></i>
+        <span>Lanzamiento: <strong>{hecho ? 'Completado' : 'Pendiente'}</strong></span>
+        <em>{fecha ?? 'Fecha por confirmar'}</em>
+      </p>
+    </div>
+    <div class="hero__logo hud">
+      <span class="hero__coords a" aria-hidden="true">N 24.80 · W 107.39</span>
+      <img src="/logo-proxima-centauri.svg" alt="Logo de Próxima Centauri" width="383" height="440" fetchpriority="high" />
+      <span class="hero__coords b" aria-hidden="true">PC-01 · ARMED</span>
+    </div>
+  </div>
+
+  <div class="contenedor">
+    <div class="hero__tray" aria-hidden="true">
+      <svg viewBox="0 0 1200 240" preserveAspectRatio="xMidYMax meet">
+        <line class="tray-suelo" x1="0" y1="222" x2="1200" y2="222" />
+        <path class="tray-lin" pathLength="1" d="M 40 222 Q 600 -140 1160 222" />
+        <circle class="tray-pt" cx="600" cy="41" r="6" />
+        <circle class="tray-anillo" cx="600" cy="41" r="10" />
+      </svg>
+    </div>
+    <div class="tele" role="list" aria-label="Telemetría prevista">
+      {tele.map((t) => (
+        <div class="tele__i" role="listitem">
+          <p class="etiqueta" style="margin:0 0 10px">{t.n}</p>
+          <p class="tele__v" style="margin:0">
+            <span data-cuenta={t.v} data-dec={t.d}>{t.v.toLocaleString('es-MX', { minimumFractionDigits: t.d, maximumFractionDigits: t.d })}</span><small>{t.u}</small>
+          </p>
+          <p class="tele__r" style="margin:0">{t.r}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

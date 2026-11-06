@@ -30,7 +30,7 @@
   },
   "variables": [
     { "id": "apogeo", "nombre": "Apogeo", "unidad": "m", "decimales": 1 },
-    { "id": "tiempo_apogeo", "nombre": "Tiempo al apogeo", "unidad": "s", "decimales": 1 },
+    { "id": "tiempo_apogeo", "nombre": "Tiempo al apogeo", "unidad": "s", "decimales": 2 },
     { "id": "tiempo_eyeccion", "nombre": "Tiempo de eyección", "unidad": "s", "decimales": 1 },
     { "id": "velocidad_descenso", "nombre": "Velocidad de descenso", "unidad": "m/s", "decimales": 1 },
     { "id": "tiempo_total", "nombre": "Tiempo total de vuelo", "unidad": "s", "decimales": 1 }

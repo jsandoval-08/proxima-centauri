@@ -1,10 +1,15 @@
 ---
 import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Resultados from '../components/Resultados.astro';
 import mision from '../data/mision.json';
 ---
 <Base>
+  <Header />
   <main>
-    <h1>PRÓXIMA <span style="color:var(--cian-centauri)">CENTAURI</span></h1>
-    <p>Estado: {mision.lanzamiento.estado}. Andamiaje de la Fase A; el diseño llega en la Fase B.</p>
+    <Hero />
+    <Resultados />
   </main>
+  <p class="pie-b etiqueta">{mision.footer.institucion}</p>
 </Base>
