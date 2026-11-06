@@ -1,0 +1,13 @@
+/* Paleta oficial Próxima Centauri. No agregar colores fuera de esta lista. */
+:root {
+  --negro-espacial: #0A0E1C;
+  --azul-noche: #141D40;
+  --azul-orbita: #23346A;
+  --cian-centauri: #3FF0E0;
+  --violeta-nebulosa: #7B3CFF;
+  --blanco: #FFFFFF;
+
+  --font-titulo: 'Montserrat', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --linea: 1px;
+}

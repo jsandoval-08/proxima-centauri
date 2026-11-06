@@ -1,0 +1,81 @@
+{
+  "_nota": "Único archivo a editar tras el lanzamiento. Un valor real en null significa 'Pendiente de lanzamiento'. 'estimado': true marca valores aún no medidos ni validados por el modelo final.",
+  "sitio": {
+    "titulo": "Próxima Centauri · Rocket Tec Sinaloa 2026",
+    "descripcion": "Landing del cohete del equipo Próxima Centauri para el reto Rocket Tec Sinaloa 2026, Tec de Monterrey, Campus Sinaloa.",
+    "url": "https://dominio-por-confirmar.example",
+    "mision": "Predecir el vuelo con la mayor precisión posible y recuperar el altímetro intacto."
+  },
+  "lanzamiento": {
+    "estado": "pendiente",
+    "fecha": null,
+    "_estados_validos": ["pendiente", "completado"]
+  },
+  "cohete": {
+    "largo_cm": 35.7,
+    "diametro_mm": 26,
+    "masa_despegue_g": 65,
+    "motor": {
+      "modelo": "Estes A10-3T",
+      "impulso_ns": 2.5,
+      "empuje_pico_n": 13,
+      "quemado_s": 0.8,
+      "retardo_s": 3
+    },
+    "altimetro": "Estes (registra altura máxima)",
+    "recuperacion": {
+      "descripcion": "Solo la ojiva con el altímetro baja en paracaídas; el cuerpo cae libre.",
+      "paracaidas": "Hexagonal de Mylar de 26.5 cm con spill hole"
+    }
+  },
+  "variables": [
+    { "id": "apogeo", "nombre": "Apogeo", "unidad": "m", "decimales": 1 },
+    { "id": "tiempo_apogeo", "nombre": "Tiempo al apogeo", "unidad": "s", "decimales": 1 },
+    { "id": "tiempo_eyeccion", "nombre": "Tiempo de eyección", "unidad": "s", "decimales": 1 },
+    { "id": "velocidad_descenso", "nombre": "Velocidad de descenso", "unidad": "m/s", "decimales": 1 },
+    { "id": "tiempo_total", "nombre": "Tiempo total de vuelo", "unidad": "s", "decimales": 1 }
+  ],
+  "prediccion": {
+    "tolerancia_motor_pct": 10,
+    "apogeo": { "min": 56, "max": 58, "central": 57, "estimado": false },
+    "tiempo_apogeo": { "min": 3.5, "max": 3.6, "central": 3.55, "estimado": false },
+    "tiempo_eyeccion": { "min": 3.8, "max": 3.8, "central": 3.8, "estimado": false },
+    "velocidad_descenso": { "min": 4, "max": 4, "central": 4, "estimado": true },
+    "tiempo_total": { "min": 18, "max": 18, "central": 18, "estimado": true },
+    "curva": {
+      "estimado": true,
+      "unidades": { "t": "s", "h": "m" },
+      "puntos": [[0,0],[0.5,14.9],[1,27.6],[1.5,38],[2,46.1],[2.5,52],[3,55.6],[3.5,57],[4,55.9],[4.5,53.9],[5,51.9],[5.5,49.9],[6,47.9],[6.5,45.9],[7,43.9],[7.5,41.9],[8,39.9],[8.5,37.9],[9,35.9],[9.5,33.9],[10,31.9],[10.5,29.9],[11,27.9],[11.5,25.9],[12,23.9],[12.5,21.9],[13,19.9],[13.5,17.9],[14,15.9],[14.5,13.9],[15,11.9],[15.5,9.9],[16,7.9],[16.5,5.9],[17,3.9],[17.5,1.9],[18,0]]
+    }
+  },
+  "real": {
+    "apogeo": null,
+    "tiempo_apogeo": null,
+    "tiempo_eyeccion": null,
+    "velocidad_descenso": null,
+    "tiempo_total": null,
+    "altimetro": null,
+    "_altimetro_valores": ["intacto", "dañado", null],
+    "puntos_vuelo": []
+  },
+  "bitacora": [
+    { "fase": "1", "titulo": "Requisitos", "estado": "completada", "detalle": null },
+    { "fase": "2", "titulo": "Materiales y pruebas de banco", "estado": "en_curso", "detalle": "Compras pendientes" },
+    { "fase": "3", "titulo": "Diseño de paracaídas", "estado": "en_curso", "detalle": "Sub-paso 3E: unión hilos-destorcedor-cordón" },
+    { "fase": "4", "titulo": "Calibración con caídas desde 12 m", "estado": "pendiente", "detalle": null },
+    { "fase": "5", "titulo": "Integración", "estado": "pendiente", "detalle": null },
+    { "fase": "6", "titulo": "Modelo final", "estado": "pendiente", "detalle": null },
+    { "fase": "L", "titulo": "Lanzamiento", "estado": "pendiente", "detalle": null }
+  ],
+  "_bitacora_estados_validos": ["completada", "en_curso", "pendiente"],
+  "equipo": [
+    { "nombre": "Javier Sandoval Dávila", "rol": "Líder de equipo", "carrera": "Ing. en Tecnologías Computacionales", "foto": null },
+    { "nombre": "Brian Cázares Molina", "rol": "Integrante", "carrera": "Ing. en Tecnologías Computacionales", "foto": null },
+    { "nombre": "Oscar Ureta Acedo", "rol": "Integrante", "carrera": "Ing. en IA y Ciencia de Datos", "foto": null },
+    { "nombre": "Jesús Ciau Gómez", "rol": "Integrante", "carrera": "Ing. en Mecatrónica", "foto": null },
+    { "nombre": "Gabriel Heredia Ibarra", "rol": "Integrante", "carrera": "Ing. en Física Industrial", "foto": null }
+  ],
+  "footer": {
+    "institucion": "Tec de Monterrey · Campus Sinaloa · 2026"
+  }
+}

@@ -1,0 +1,33 @@
+---
+import '../styles/tokens.css';
+import mision from '../data/mision.json';
+const { titulo, descripcion, url } = mision.sitio;
+const og = new URL('/og-logo.png', url).href;
+---
+<!doctype html>
+<html lang="es-MX">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titulo}</title>
+    <meta name="description" content={descripcion} />
+    <meta name="theme-color" content="#0A0E1C" />
+    <link rel="icon" type="image/svg+xml" href="/logo-proxima-centauri.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:title" content={titulo} />
+    <meta property="og:description" content={descripcion} />
+    <meta property="og:image" content={og} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@800;900&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+<style is:global>
+  html { background: var(--negro-espacial); color: var(--blanco); }
+  body { margin: 0; font-family: var(--font-mono); }
+</style>

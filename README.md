@@ -1,0 +1,40 @@
+# Próxima Centauri · Rocket Tec Sinaloa 2026
+
+Landing estática del equipo Próxima Centauri (Tec de Monterrey, Campus Sinaloa). Compara la predicción del vuelo contra el resultado real y calcula el error.
+
+## Requisitos
+Node.js 20 o superior y npm.
+
+## Correr en local
+```bash
+npm install
+npm run dev
+```
+Abre http://localhost:4321.
+
+## Build de producción
+```bash
+npm run build
+```
+Genera la carpeta `dist/` con HTML, CSS y JS estáticos. Para revisarla: `npm run preview`.
+
+## Desplegar
+Sube el contenido de `dist/` a cualquier hosting estático (servidor del profesor, Netlify, GitHub Pages, Cloudflare Pages, etc.). Pasos generales:
+1. Define el dominio en `astro.config.mjs` (`site`) y en `src/data/mision.json` (`sitio.url`).
+2. Si se sirve desde una subruta (por ejemplo `/equipo/`), agrega `base: '/equipo/'` en `astro.config.mjs`.
+3. `npm run build` y copia `dist/` al servidor.
+
+## Actualizar después del lanzamiento
+Edita solo `src/data/mision.json`:
+- `lanzamiento.estado` a `"completado"` y `lanzamiento.fecha` (formato `AAAA-MM-DD`).
+- Valores de `real` (apogeo, tiempos, velocidad de descenso, `altimetro`: `"intacto"` o `"dañado"`) y `puntos_vuelo` como pares `[t, h]`.
+- Estado de cada fase en `bitacora` (`completada`, `en_curso`, `pendiente`).
+- Fotos del equipo: ruta en el campo `foto` (archivo dentro de `public/`).
+
+Luego `npm run build` y vuelve a subir `dist/`.
+
+## Estructura
+- `src/data/mision.json`: única fuente de datos.
+- `src/styles/tokens.css`: paleta y tipografías.
+- `src/layouts`, `src/components`, `src/pages`: la interfaz.
+- `assets/` y `public/`: logo oficial (no modificar).
