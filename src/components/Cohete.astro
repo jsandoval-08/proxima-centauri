@@ -1,0 +1,80 @@
+---
+import mision from '../data/mision.json';
+import SeccionCab from './SeccionCab.astro';
+
+const c = mision.cohete;
+const m = c.motor;
+const fmt = (n, d = 0) => n.toLocaleString('es-MX', { minimumFractionDigits: d, maximumFractionDigits: d });
+
+const dims = [
+  { n: 'Largo con motor', v: c.largo_cm, d: 1, u: 'cm', pre: '~' },
+  { n: 'Diámetro', v: c.diametro_mm, d: 0, u: 'mm', pre: 'Ø ' },
+  { n: 'Masa al despegue', v: c.masa_despegue_g, d: 0, u: 'g', pre: '~' },
+];
+const motor = [
+  { n: 'Impulso total', v: m.impulso_ns, d: 1, u: 'N·s' },
+  { n: 'Empuje pico', v: m.empuje_pico_n, d: 0, u: 'N' },
+  { n: 'Tiempo de quemado', v: m.quemado_s, d: 1, u: 's' },
+  { n: 'Retardo', v: m.retardo_s, d: 0, u: 's' },
+];
+
+// Esquema lineal: 480 px = largo del cohete
+const L = c.largo_cm;
+const px = 480 / L;
+---
+<section class="seccion" id="cohete" aria-labelledby="t-cohete">
+  <div class="contenedor">
+    <SeccionCab num="03" etiqueta="El cohete" titulo="FICHA" acento="TÉCNICA" id="t-cohete" />
+
+    <figure class="esquema hud reveal" style="margin:0 0 24px">
+      <svg viewBox="0 0 580 150" role="img" aria-labelledby="e-t e-d">
+        <title id="e-t">Esquema lineal del cohete</title>
+        <desc id="e-d">Cohete de {L} centímetros con aletas, cuerpo y ojiva. La ojiva con el altímetro se separa y desciende en paracaídas.</desc>
+        <g fill="none" stroke="var(--cian-centauri)" stroke-width="2">
+          <rect x="52" y="44" width="340" height="36" />
+          <path d="M392 44 Q 490 44 532 62 Q 490 80 392 80" />
+          <path d="M52 44 L52 18 L108 44 M52 80 L52 106 L108 80" />
+          <rect x="40" y="53" width="12" height="18" />
+        </g>
+        <line x1="392" y1="30" x2="392" y2="96" stroke="var(--violeta-nebulosa)" stroke-width="1.5" stroke-dasharray="4 4" />
+        <text class="g-txt" x="462" y="30" text-anchor="middle">OJIVA + ALTÍMETRO</text>
+        <text class="g-txt" x="222" y="68" text-anchor="middle">CUERPO</text>
+        <g stroke="var(--azul-orbita)" stroke-width="1"><path d="M40 120 H532 M40 114 V126 M532 114 V126" /></g>
+        <g stroke="var(--cian-centauri)" stroke-width="1"><path d="M40 120 H532" /></g>
+        <text class="g-txt" x="286" y="142" text-anchor="middle">{fmt(L, 1)} cm</text>
+      </svg>
+    </figure>
+
+    <div class="cards">
+      <article class="hud tarjeta reveal">
+        <p class="etiqueta">Dimensiones</p>
+        <dl class="dl">
+          {dims.map((x) => (
+            <div><dt>{x.n}</dt><dd><span>{x.pre}<span data-cuenta={x.v} data-dec={x.d}>{fmt(x.v, x.d)}</span></span><small>{x.u}</small></dd></div>
+          ))}
+        </dl>
+      </article>
+
+      <article class="hud tarjeta reveal">
+        <p class="etiqueta">Motor · {m.modelo}</p>
+        <dl class="dl">
+          {motor.map((x) => (
+            <div><dt>{x.n}</dt><dd><span data-cuenta={x.v} data-dec={x.d}>{fmt(x.v, x.d)}</span><small>{x.u}</small></dd></div>
+          ))}
+        </dl>
+      </article>
+
+      <article class="hud tarjeta reveal">
+        <p class="etiqueta">Altímetro</p>
+        <h3>Estes</h3>
+        <p>Registra la altura máxima del vuelo. Es la referencia del resultado real, por eso debe volver intacto.</p>
+      </article>
+
+      <article class="hud tarjeta reveal">
+        <p class="etiqueta">Recuperación</p>
+        <h3>Solo baja la ojiva</h3>
+        <p>La ojiva con el altímetro desciende en un paracaídas {c.recuperacion.paracaidas.toLowerCase()}. El cuerpo cae libre.</p>
+      </article>
+    </div>
+  </div>
+</section>

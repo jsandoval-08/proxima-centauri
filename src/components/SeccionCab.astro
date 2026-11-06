@@ -1,0 +1,7 @@
+---
+const { num, etiqueta, titulo, acento, id } = Astro.props;
+---
+<div class="seccion__cab reveal">
+  <p class="etiqueta" style="margin:0">{num} / {etiqueta}</p>
+  <h2 class="titulo" id={id}>{titulo} {acento && <span style="color:var(--cian-centauri)">{acento}</span>}</h2>
+</div>

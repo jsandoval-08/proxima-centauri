@@ -1,0 +1,55 @@
+---
+import mision from '../data/mision.json';
+import SeccionCab from './SeccionCab.astro';
+import { filas, formato, rango } from '../lib/calculos.js';
+
+const p = mision.prediccion;
+const lista = filas(mision);
+---
+<section class="seccion" id="modelo" aria-labelledby="t-modelo">
+  <div class="contenedor">
+    <SeccionCab num="04" etiqueta="Modelo y predicción" titulo="EL MODELO" acento="EN MATLAB" id="t-modelo" />
+
+    <div class="dos">
+      <div class="reveal">
+        <p class="lead">Simulamos el vuelo en MATLAB resolviendo la segunda ley de Newton en una sola dimensión, la vertical, dividida en dos fases.</p>
+
+        <h3 class="sub">Ascenso con motor y en vuelo libre</h3>
+        <p>Sobre el cohete actúan tres fuerzas: el empuje del motor, la gravedad y el arrastre del aire.</p>
+        <pre class="formula" aria-label="m dv/dt = T(t) menos m g menos un medio rho Cd A v por valor absoluto de v"><code>m · dv/dt = T(t) − m·g − ½·ρ·Cd·A·v·|v|</code></pre>
+
+        <h3 class="sub">Descenso en paracaídas</h3>
+        <p>Con el paracaídas abierto el arrastre se aproxima como lineal con la velocidad, y la velocidad terminal sale directo.</p>
+        <pre class="formula" aria-label="F igual a menos b por v; velocidad terminal igual a m g entre b"><code>F = −b·v        v_t = m·g / b</code></pre>
+      </div>
+
+      <div class="reveal">
+        <div class="hud tarjeta">
+          <p class="etiqueta">Qué simplifica el modelo</p>
+          <ul class="lista">
+            <li>Movimiento solo vertical: sin viento ni inclinación.</li>
+            <li>Densidad del aire y coeficiente de arrastre constantes.</li>
+            <li>Curva de empuje aproximada y masa constante durante el vuelo.</li>
+            <li>El arrastre del paracaídas se trata como lineal, aunque en la práctica crece con el cuadrado de la velocidad.</li>
+          </ul>
+          <p class="nota" style="margin-bottom:0">Por eso la calibración con caídas desde 12 m es clave: ajusta el coeficiente <b>b</b> con datos reales.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top:40px">
+      <p class="etiqueta" style="margin:0 0 16px">Predicciones preliminares · motor ±{p.tolerancia_motor_pct} %</p>
+      <div class="pred">
+        {lista.map((f) => (
+          <div class="hud tarjeta pred__i">
+            <p class="etiqueta" style="margin:0 0 10px">{f.nombre}</p>
+            <p class="pred__v">{formato(f.pred.central, f.decimales)}<small>{f.unidad}</small></p>
+            <p class="pred__r">{f.pred.min !== f.pred.max ? `Rango ${rango(f.pred, f.decimales)} ${f.unidad}` : 'Valor puntual'}</p>
+            {f.pred.estimado && <span class="est" style="margin:8px 0 0">ESTIMADO</span>}
+          </div>
+        ))}
+      </div>
+      <p class="nota">Los motores Estes varían cerca de ±{p.tolerancia_motor_pct} % entre piezas, por eso el apogeo se reporta como rango. Los valores marcados como estimados se actualizarán con el modelo final.</p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,31 @@
+---
+import mision from '../data/mision.json';
+import SeccionCab from './SeccionCab.astro';
+
+const iniciales = (n) => n.split(' ').slice(0, 2).map((s) => s[0]).join('').toUpperCase();
+const HEX = '50,3 93,27 93,73 50,97 7,73 7,27';
+---
+<section class="seccion" id="equipo" aria-labelledby="t-equipo">
+  <div class="contenedor">
+    <SeccionCab num="07" etiqueta="Equipo" titulo="LA" acento="TRIPULACIÓN" id="t-equipo" />
+    <ul class="equipo">
+      {mision.equipo.map((p, i) => {
+        const lider = p.rol === 'Líder de equipo';
+        return (
+          <li class="hud tarjeta persona reveal">
+            <svg class="hex" viewBox="0 0 100 100" role="img" aria-label={p.foto ? `Foto de ${p.nombre}` : `Iniciales de ${p.nombre}`}>
+              {p.foto && <defs><clipPath id={`hx${i}`}><polygon points={HEX} /></clipPath></defs>}
+              <polygon points={HEX} fill="var(--negro-espacial)" stroke="var(--cian-centauri)" stroke-width="2" />
+              {p.foto
+                ? <image href={p.foto} x="0" y="0" width="100" height="100" preserveAspectRatio="xMidYMid slice" clip-path={`url(#hx${i})`} />
+                : <text x="50" y="50" text-anchor="middle" dominant-baseline="central" font-family="Montserrat, sans-serif" font-weight="900" font-size="30" fill="#FFFFFF">{iniciales(p.nombre)}</text>}
+            </svg>
+            <span class={`rol ${lider ? 'rol--lider' : ''}`}>{p.rol}</span>
+            <h3>{p.nombre}</h3>
+            <p>{p.carrera}</p>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</section>

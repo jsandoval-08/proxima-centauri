@@ -1,0 +1,26 @@
+---
+import mision from '../data/mision.json';
+import SeccionCab from './SeccionCab.astro';
+
+const texto = { completada: 'Completada', en_curso: 'En curso', pendiente: 'Pendiente' };
+const hechas = mision.bitacora.filter((f) => f.estado === 'completada').length;
+---
+<section class="seccion" id="bitacora" aria-labelledby="t-bit">
+  <div class="contenedor">
+    <SeccionCab num="06" etiqueta="Bitácora" titulo="LÍNEA DE" acento="TIEMPO" id="t-bit" />
+    <p class="etiqueta reveal" style="margin:-16px 0 32px">{hechas} de {mision.bitacora.length} fases completadas</p>
+
+    <ol class="linea">
+      {mision.bitacora.map((f) => (
+        <li class={`fase fase--${f.estado} reveal`}>
+          <span class="fase__nodo" aria-hidden="true"></span>
+          <div class="hud tarjeta fase__c">
+            <p class="etiqueta" style="margin:0 0 6px">{f.fase === 'L' ? 'Lanzamiento' : `Fase ${f.fase}`} · {texto[f.estado]}</p>
+            <h3>{f.titulo}</h3>
+            {f.detalle && <p>{f.detalle}</p>}
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

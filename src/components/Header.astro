@@ -1,4 +1,12 @@
 ---
+const enlaces = [
+  ['#mision', 'Misión'],
+  ['#cohete', 'Cohete'],
+  ['#modelo', 'Modelo'],
+  ['#resultados', 'Resultados'],
+  ['#bitacora', 'Bitácora'],
+  ['#equipo', 'Equipo'],
+];
 ---
 <header class="header">
   <div class="contenedor header__in">
@@ -7,9 +15,20 @@
       <span>PRÓXIMA <b>CENTAURI</b></span>
     </a>
     <nav class="nav" aria-label="Principal">
-      <a href="#inicio">Inicio</a>
-      <a href="#resultados">Resultados</a>
+      {enlaces.map(([h, t]) => <a href={h}>{t}</a>)}
     </nav>
+    <details class="menu">
+      <summary>Menú</summary>
+      <nav aria-label="Principal (móvil)">
+        {enlaces.map(([h, t]) => <a href={h}>{t}</a>)}
+      </nav>
+    </details>
     <div class="sys" aria-hidden="true"><i></i>SYS · OK</div>
   </div>
 </header>
+<script>
+  // Cierra el menú móvil al elegir una sección.
+  document.querySelectorAll('.menu a').forEach((a) =>
+    a.addEventListener('click', () => a.closest('details')?.removeAttribute('open'))
+  );
+</script>

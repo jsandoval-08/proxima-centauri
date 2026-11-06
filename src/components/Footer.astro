@@ -1,0 +1,23 @@
+---
+import mision from '../data/mision.json';
+const nombres = mision.equipo.map((p) => p.nombre);
+---
+<footer class="pie">
+  <div class="contenedor pie__in">
+    <div class="pie__marca">
+      <img src="/logo-proxima-centauri.svg" alt="Logo de Próxima Centauri" width="52" height="60" loading="lazy" />
+      <div>
+        <p class="titulo" style="font-size:1.4rem;line-height:1.1;margin:0">PRÓXIMA <span style="color:var(--cian-centauri)">CENTAURI</span></p>
+        <p class="etiqueta" style="margin:6px 0 0">{mision.footer.institucion}</p>
+      </div>
+    </div>
+    <div>
+      <p class="etiqueta" style="margin:0 0 10px">Créditos del equipo</p>
+      <p class="pie__nom">{nombres.join(' · ')}</p>
+    </div>
+  </div>
+  <div class="contenedor pie__fin">
+    <span>Rocket Tec Sinaloa 2026</span>
+    <a href="#inicio">Volver arriba</a>
+  </div>
+</footer>
