@@ -14,7 +14,7 @@ El reto se gana prediciendo el vuelo lo más cerca posible del real con el altí
 - Paleta (variables en `src/styles/tokens.css`; no agregar otros colores):
   Negro Espacial #0A0E1C (fondo) · Azul Noche #141D40 · Azul Órbita #23346A · Cian Centauri #3FF0E0 (acento principal) · Violeta Nebulosa #7B3CFF (acento secundario) · Blanco #FFFFFF.
 - Tipografía: Montserrat 800–900 para títulos; JetBrains Mono para datos y etiquetas HUD (Google Fonts).
-- Logo: `assets/logo-proxima-centauri.svg` (copias en `public/` y `src/assets/`). Usar TAL CUAL: no redibujar ni cambiar proporciones, colores o tipografía. Va en header, hero y favicon.
+- Logo: `assets/logo-proxima-centauri.svg` (copias en `public/` y `src/assets/`). El logo oficial es SIN margen blanco exterior (`assets/logo-proxima-centauri-calcomania.svg` conserva la versión con margen, solo para la calcomanía). Usar TAL CUAL: no redibujar ni cambiar proporciones, colores o tipografía. Va en header, hero y favicon.
 - Nombre: "PRÓXIMA" en blanco, "CENTAURI" en cian.
 - Contraste AA mínimo (texto 4.5:1).
 - Etiquetas del equipo: "Líder de equipo" en violeta; "Integrante" con contorno cian. Sin fotos por ahora: iniciales en hexágono con trazo cian; campo `foto` opcional en el JSON.
