@@ -33,8 +33,19 @@ Edita solo `src/data/mision.json`:
 
 Luego `npm run build` y vuelve a subir `dist/`.
 
+## Imagen para redes (Open Graph)
+`public/og-logo.png` (1200×630) se genera desde el logo oficial. Si cambia el logo:
+```bash
+node scripts/og.mjs
+```
+Recuerda poner el dominio real en `sitio.url` para que la URL de la imagen sea correcta.
+
+## Calidad verificada
+Lighthouse sobre el build (`npm run preview`): rendimiento 91–100, accesibilidad 100, buenas prácticas 100 y SEO 100 (móvil y escritorio). Las animaciones respetan `prefers-reduced-motion`.
+
 ## Estructura
 - `src/data/mision.json`: única fuente de datos.
 - `src/styles/tokens.css`: paleta y tipografías.
 - `src/layouts`, `src/components`, `src/pages`: la interfaz.
+- `scripts/og.mjs`: genera la imagen Open Graph.
 - `assets/` y `public/`: logo oficial (no modificar).

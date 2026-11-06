@@ -70,10 +70,10 @@ body::before {
 .hero__orbita circle { fill: none; stroke: var(--violeta-nebulosa); stroke-width: 1; }
 .hero__tray { position: relative; z-index: 1; margin-top: auto; }
 .hero__tray svg { width: 100%; height: auto; max-height: 220px; }
-.tray-lin { fill: none; stroke: var(--cian-centauri); stroke-width: 2; stroke-dasharray: 1; stroke-dashoffset: 1; animation: trazo 2.6s .4s cubic-bezier(.3,.6,.3,1) forwards; }
+.tray-lin { fill: none; stroke: var(--cian-centauri); stroke-width: 2; stroke-dasharray: 1; stroke-dashoffset: 1; animation: trazo 1.6s .1s cubic-bezier(.3,.6,.3,1) forwards; }
 .tray-suelo { stroke: var(--azul-orbita); stroke-width: 1; }
-.tray-pt { fill: var(--cian-centauri); opacity: 0; animation: aparece .4s 2.8s forwards; }
-.tray-anillo { fill: none; stroke: var(--cian-centauri); stroke-width: 1.5; opacity: 0; transform-box: fill-box; transform-origin: center; animation: pulso 2.4s 3s infinite; }
+.tray-pt { fill: var(--cian-centauri); opacity: 0; animation: aparece .3s 1.5s forwards; }
+.tray-anillo { fill: none; stroke: var(--cian-centauri); stroke-width: 1.5; opacity: 0; transform-box: fill-box; transform-origin: center; animation: pulso 2.4s 1.7s infinite; }
 @keyframes trazo { to { stroke-dashoffset: 0; } }
 @keyframes aparece { to { opacity: 1; } }
 @keyframes pulso { 0% { opacity: .9; transform: scale(.6); } 100% { opacity: 0; transform: scale(2.4); } }
