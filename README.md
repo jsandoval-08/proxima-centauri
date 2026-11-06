@@ -18,11 +18,16 @@ npm run build
 ```
 Genera la carpeta `dist/` con HTML, CSS y JS estáticos. Para revisarla: `npm run preview`.
 
-## Desplegar
+## Desplegar en GitHub Pages (automático)
+Cada `push` a `main` publica el sitio con `.github/workflows/deploy.yml` en
+https://jsandoval-08.github.io/proxima-centauri/
+Solo se activa una vez en el repo: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+
+## Desplegar en otro hosting estático
 Sube el contenido de `dist/` a cualquier hosting estático (servidor del profesor, Netlify, GitHub Pages, Cloudflare Pages, etc.). Pasos generales:
-1. Define el dominio en `astro.config.mjs` (`site`) y en `src/data/mision.json` (`sitio.url`).
-2. Si se sirve desde una subruta (por ejemplo `/equipo/`), agrega `base: '/equipo/'` en `astro.config.mjs`.
-3. `npm run build` y copia `dist/` al servidor.
+1. Compila con el dominio real: `SITE=https://midominio.mx npm run build` (en PowerShell: `$env:SITE='https://midominio.mx'; npm run build`).
+2. Si se sirve desde una subruta, agrega también `BASE_PATH=/subruta/` (con diagonal al final).
+3. Copia `dist/` al servidor. Actualiza `sitio.url` en `src/data/mision.json`.
 
 ## Actualizar después del lanzamiento
 Edita solo `src/data/mision.json`:
